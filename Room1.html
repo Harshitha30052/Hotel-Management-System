@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Selection</title>
+    <link rel="stylesheet" href="hotel.css">
+    <script>
+        // Object to store room prices for different hotels
+        const hotelPrices = {
+            "The Park Hyderabad": {
+                "single": 100,  // Single Room price at The Park Hyderabad
+                "double": 150,  // Double Room price at The Park Hyderabad
+                "deluxe": 200   // Deluxe Room price at The Park Hyderabad
+            },
+            "Hotel Marriott": {
+                "single": 120,  // Single Room price at Hotel Marriott
+                "double": 170,  // Double Room price at Hotel Marriott
+                "deluxe": 220   // Deluxe Room price at Hotel Marriott
+            },
+            "Taj Palace": {
+                "single": 90,   // Single Room price at Taj Palace
+                "double": 140,  // Double Room price at Taj Palace
+                "deluxe": 180   // Deluxe Room price at Taj Palace
+            }
+        };
+
+        // This function runs when the page loads
+        window.onload = function() {
+            // Get the selected hotel from localStorage
+            const selectedHotel = localStorage.getItem('selectedHotel');
+            if (selectedHotel) {
+                document.getElementById('hotel-name').innerText = selectedHotel;
+                displayRooms(selectedHotel);
+            }
+        }
+
+        // Function to display room options based on the selected hotel
+        function displayRooms(hotel) {
+            // Get the room prices for the selected hotel
+            const rooms = hotelPrices[hotel];
+            if (!rooms) return;
+
+            // Dynamically create room options
+            const roomContainer = document.getElementById('room-options');
+            roomContainer.innerHTML = ''; // Clear previous room options
+
+            for (let roomType in rooms) {
+                let roomPrice = rooms[roomType];
+                let roomElement = document.createElement('div');
+                roomElement.className = 'room-option';
+
+                // Create room option display
+                roomElement.innerHTML = `
+                    <h3>${capitalizeFirstLetter(roomType)} Room</h3>
+                    <p>Price: $${roomPrice} per night</p>
+                    <button onclick="selectRoom('${roomType}')">Select ${capitalizeFirstLetter(roomType)} Room</button>
+                `;
+                roomContainer.appendChild(roomElement);
+            }
+        }
+
+        // Function to handle room selection
+        function selectRoom(roomType) {
+            // Get the selected hotel name from localStorage
+            const selectedHotel = localStorage.getItem('selectedHotel');
+            if (selectedHotel) {
+                const roomPrice = hotelPrices[selectedHotel][roomType];
+                alert(`You have selected a ${capitalizeFirstLetter(roomType)} Room at ${selectedHotel} for $${roomPrice} per night.`);
+            }
+        }
+
+        // Helper function to capitalize the first letter of a string
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
+</head>
+<body>
+    <div class="nav_bar">
+        <div class="logo"></div>
+        <div class="nav_menu">
+            <ul>
+                <li><a href="hotel.html" id="a">Home</a></li>
+                <li><a href="hotel.html#footer" id="a">About Us</a></li>
+                <li><a href="hotel.html#footer" id="a">Contact Us</a></li>
+                <li><a href="random.html" id="a">Logout</a></li>
+                <li><a href="Hotels.html" id="a">Packages</a></li>
+            </ul>
+        </div>
+        <div class="nav_but">
+            <button>Book Now</button>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="room-selection">
+        <h2>Welcome to the room selection page!</h2>
+        <h3>Selected Hotel: <span id="hotel-name"></span></h3>
+
+        <!-- Room options will be displayed here -->
+        <div id="room-options">
+            <!-- Room options will be dynamically added by JS -->
+        </div>
+    </div>
+</body>
+</html>

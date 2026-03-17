@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+</head>
+<body>
+    <h1>Hotel Booking Form</h1>
+    
+    <form action="insert.php" method="POST" id="bookingForm">
+        <input type="text" name="hotel_name" id="hotel_name" placeholder="Hotel Name" required /><br>
+        <input type="text" name="room_type" id="room_type" placeholder="Room Type" required /><br>
+        <input type="number" name="room_price" id="room_price" placeholder="Room Price" required /><br>
+        <input type="text" name="food_items" id="food_items" placeholder="Food Items" required /><br>
+        <input type="number" name="total_food_cost" id="total_food_cost" placeholder="Total Food Cost" required /><br>
+        <input type="submit" value="Book Now" />
+    </form>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevents form submission to allow saving data in localStorage
+
+            // Get form values
+            const hotelName = document.getElementById('hotel_name').value;
+            const roomType = document.getElementById('room_type').value;
+            const roomPrice = document.getElementById('room_price').value;
+            const foodItems = document.getElementById('food_items').value;
+            const totalFoodCost = document.getElementById('total_food_cost').value;
+
+            // Store the form values in localStorage
+            localStorage.setItem('name', hotelName);
+            localStorage.setItem('room-type', roomType);
+            localStorage.setItem('room-price', roomPrice);
+            localStorage.setItem('food-items', foodItems);
+            localStorage.setItem('total-food-cost', totalFoodCost);
+
+            // Redirect to the booking summary page
+            window.location.href = 'summ.html'; // This will redirect to the page where you show the summary.
+        });
+    </script>
+</body>
+</html>

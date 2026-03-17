@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: separate; /* Allows space between columns */
+            border-spacing: 10px; /* Space between columns and rows */
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternates row colors */
+        }
+        tr:hover {
+            background-color: #ddd; /* Hover effect on rows */
+        }
+    </style>
+</head>
+<body>
+    <h1>Reservation Summary</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Hotel Name</th>
+                <th>Room Type</th>
+                <th>Room Price</th>
+            </tr>
+        </thead>
+        <tbody id="reservation-table">
+            <!-- New rows will be appended here -->
+            <!-- <tr>
+                <td id="guest-name"></td>
+                <td id="checkin"></td>
+                <td id="checkout"></td>
+                <td id="hotel"></td>
+                <td id="roomt"></td>
+                <td id="roomp"></td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <script>
+        // Function to add a new row to the table
+        function addRowToTable(guestName, checkin, checkout, hotelName, roomType, roomPrice) {
+            const tableBody = document.getElementById("reservation-table");
+
+            // Create a new row
+            const newRow = document.createElement("tr");
+
+            // Create cells for each piece of information
+            const nameCell = document.createElement("td");
+            nameCell.innerText = guestName ? guestName : "Not selected";
+
+            const checkinCell = document.createElement("td");
+            checkinCell.innerText = checkin ? checkin : "Not selected";
+
+            const checkoutCell = document.createElement("td");
+            checkoutCell.innerText = checkout ? checkout : "Not selected";
+
+            const hotelCell = document.createElement("td");
+            hotelCell.innerText = hotelName ? hotelName : "Not selected";
+
+            const roomTypeCell = document.createElement("td");
+            roomTypeCell.innerText = roomType ? roomType : "Not selected";
+
+            const roomPriceCell = document.createElement("td");
+            roomPriceCell.innerText = roomPrice ? roomPrice : "Not selected";
+
+            // Append the cells to the row
+            newRow.appendChild(nameCell);
+            newRow.appendChild(checkinCell);
+            newRow.appendChild(checkoutCell);
+            newRow.appendChild(hotelCell);
+            newRow.appendChild(roomTypeCell);
+            newRow.appendChild(roomPriceCell);
+
+            // Append the row to the table body
+            tableBody.appendChild(newRow);
+        }
+
+        // Retrieve the data from localStorage and add it to the table
+        function populateTable() {
+            const guestName=localStorage.getItem("Name");
+            const checkin = localStorage.getItem("check-in");
+            const checkout = localStorage.getItem("check-out");
+            const hotelName = localStorage.getItem("name");
+            const roomType = localStorage.getItem("room-type");
+            const roomPrice = localStorage.getItem("room-price");
+           
+
+            // Add a new row to the table with the retrieved data
+            addRowToTable(guestName, checkin, checkout, hotelName, roomType, roomPrice);
+        }
+
+        // Populate the table when the page loads
+        populateTable();
+
+        // Example: If you want to add another row after a new selection
+        // Example usage (call this after storing new data in localStorage):
+        // localStorage.setItem("check-in", "2025-04-06");
+        // localStorage.setItem("check-out", "2025-04-10");
+        // localStorage.setItem("name", "Hotel XYZ");
+        // localStorage.setItem("room-type", "Suite");
+        // localStorage.setItem("room-price", "$200");
+        // localStorage.setItem("guest-name", "John Doe");
+        // populateTable();  // This will add the new row with the new data
+    </script>
+</body>
+</html>
