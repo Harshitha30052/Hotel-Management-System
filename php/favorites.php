@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Favorite Hotels</title>
+  <link rel="stylesheet" href="../css/hotel.css" />
+
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-..."
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: beige;
+    }
+
+    h1 {
+      text-align: center;
+      color:#0056b3;
+      font-family:'Times New Roman', Times, serif;
+    }
+
+    .welcome {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color:red;
+      margin-top:6px;
+    }
+
+    .favorite-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .favorite-item {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hotel-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+
+    .no-favs {
+      text-align: center;
+      font-size: 18px;
+      color: #777;
+      margin-top: 50px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Favorite/Recommended Hotels</h1>
+  <p class="welcome" id="welcomeText"></p>
+
+  <div class="favorite-list" id="favoriteList"></div>
+  <p class="no-favs" id="noFavs" style="display: none;">You haven't added any hotels to favorites yet.</p>
+
+  <div style="text-align: center;">
+    <a href="Hotels.php" class="back-btn">Back to Hotel List</a>
+  </div>
+
+  <?php
+session_start();
+
+function getUsernameFromFile($filename = "../users.txt") {
+    if (!isset($_SESSION['username'])) {
+        return "Guest"; // Default username if no session is found
+    }
+
+    $currentUser = $_SESSION['username'];
+
+    if (file_exists($filename)) {
+        $lines = file($filename);
+        foreach ($lines as $line) {
+            $parts = explode("||", trim($line));
+            // if (count($parts) >= 1 && ($parts[0] === $currentUser || $parts[1] === $currentUser)) {
+            //     return $parts[0]; // Return the actual username from the file
+            // }
+            if (count($parts) >= 1 && (
+              $parts[0] === $currentUser || 
+              (isset($parts[1]) && $parts[1] === $currentUser)
+          )) {
+              return $parts[0];
+          }
+  
+        }
+    }
+
+    return "Guest"; // Fallback if username is not found in the file
+}
+
+$username = getUsernameFromFile();
+?>
+
+  <script>
+    // Fetch the username from PHP dynamically
+    const username = "<?php echo $username; ?>";
+    const favoriteList = document.getElementById('favoriteList');
+    const noFavsMsg = document.getElementById('noFavs');
+    const welcomeText = document.getElementById('welcomeText');
+
+    // Show welcome message
+    welcomeText.textContent = `Welcome, ${username}! Here are your favorite hotels:`;
+
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Filter for current user's favorites
+    const userFavorites = favorites.filter(fav => fav.username === username);
+
+    if (userFavorites.length === 0) {
+      noFavsMsg.style.display = 'block';
+    } else {
+      userFavorites.forEach((fav, index) => {
+        const item = document.createElement('div');
+        item.className = 'favorite-item';
+
+        const hotelInfo = document.createElement('div');
+        hotelInfo.className = 'hotel-info';
+        hotelInfo.innerHTML = `<strong>${fav.hotel}</strong><span>Liked by: ${fav.username}</span>`;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => {
+          // Remove this favorite
+          favorites = favorites.filter(
+            f => !(f.username === fav.username && f.hotel === fav.hotel)
+          );
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+          location.reload();
+        };
+
+        item.appendChild(hotelInfo);
+        item.appendChild(removeBtn);
+        favoriteList.appendChild(item);
+      });
+    }
+  </script>
+</body>
+</html>

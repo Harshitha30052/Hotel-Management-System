@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/food.css">
+    <link rel="stylesheet" href="../css/hotel.css">
+</head>
+<body>
+
+    <div class="nav_bar">
+        <div class="logo">
+
+        </div>
+        <div class="nav_menu">
+            <ul>
+                <li><a href="../html/hotel.html" id="a">Home</a></li>
+                <li><a href="../html/hotel.html#footer" id="a">About Us</a></li>
+                <li><a href="../html/hotel.html#footer" id="a">Contact Us</a></li>
+                <li><a href="../html/random.html" id="a">Logout</a></li>
+                <li><a href="../html/Hotels.html" id="a">Packages</a></li>
+                <li><a href="../html/Food.html" id="a">Meals</a></li>
+            </ul>
+        </div>
+        <div class="nav_but">
+            <button class="batton">Book Now</button>
+        </div>
+    </div>
+
+    <!-- food section -->
+    <div class="food">
+        <div class="header_foo">
+            <div class="food_header">
+        
+                <h1>Food Items</h1>
+                <h2>Check out What Our Hotel Provides</h2>
+            </div>
+        </div>
+        <div class="hotel-select">
+            <label for="hotel-dropdown">Select Hotel: </label>
+            <select id="hotel-dropdown" onchange="updateMenuPrices()">
+                <option value="">--Select Hotel--</option>
+                <option value="The Park Hyderabad">The Park Hyderabad</option>
+                <option value="Taj Hotel">Taj Hotel</option>
+                <option value="Lemon Tree">Lemon Tree</option>
+                <option value="Taj Deccan">Taj Deccan</option>
+                <option value="Ibis Hotel">Ibis Hotel</option>
+                <option value="Trident Hotel">Trident Hotel</option>
+                <option value="Taj Krishna">Taj Krishna</option>
+                <option value="Golconda Hotel">Golconda Hotel</option>
+            </select>
+        </div>
+
+        <div class="meals_head">
+            <div class="meals">
+                <h1>BreakFast</h1>
+            </div>
+        </div>
+
+        <div class="food_gallery">
+            <div class="f_gal1 food_gal">
+                <div class="food_div div1">
+                    <div class="img1"></div>
+                    <div class="food_name">
+                        <h2>Idly</h2>
+                    </div>
+                    <div class="price" id="idly-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="idly">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="idly-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="idly">-</button>
+                        <span class="quantity" id="idly-quantity">0</span>
+                        <button class="increment" data-item="idly">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal2 food_gal">
+                <div class="food_div div2">
+                    <div class="img2"></div>
+                    <div class="food_name"><h2>Dosa</h2></div>
+                    <div class="price" id="dosa-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="dosa">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="dosa-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="dosa">-</button>
+                        <span class="quantity" id="dosa-quantity">0</span>
+                        <button class="increment" data-item="dosa">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class=" f_gal3 food_gal">
+                <div class="food_div div3">
+                    <div class="img3"></div>
+                    <div class="food_name">
+                        <h2>Vada</h2>
+                    </div>
+                    <div class="price" id="vada-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="vada">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="vada-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="vada">-</button>
+                        <span class="quantity" id="vada-quantity">0</span>
+                        <button class="increment" data-item="vada">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal4 food_gal">
+                <div class="food_div div4">
+                    <div class="img4"></div>
+                    <div class="food_name">
+                        <h2>Upma</h2>
+                    </div>
+                    <div class="price" id="upma-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="upma">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="upma-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="upma">-</button>
+                        <span class="quantity" id="upma-quantity">0</span>
+                        <button class="increment" data-item="upma">+</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div class="food">
+        <div class="meals_head">
+            <div class="meals">
+                <h1>Lunch</h1>
+            </div>
+        </div>
+        
+        <div class="f_gal5 food_gallery">
+            <div class="food_gal">
+                <div class="food_div div5">
+                    <div class="img5"></div>
+                    <div class="food_name">
+                        <h2>Veg-Fried_Rice</h2>
+                    </div>
+                    <div class="price" id="fried-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="fried">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="fried-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="fried">-</button>
+                        <span class="quantity" id="fried-quantity">0</span>
+                        <button class="increment" data-item="fried">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal6 food_gal">
+                <div class="food_div div6">
+                    <div class="img6"></div>
+                    <div class="food_name">
+                        <h2>Chicken_Biryani</h2>
+                    </div>
+                    <div class="price" id="chicken-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="chicken">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="chicken-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="chicken">-</button>
+                        <span class="quantity" id="chicken-quantity">0</span>
+                        <button class="increment" data-item="chicken">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal7 food_gal">
+                <div class="food_div div7">
+                    <div class="img7"></div>
+                    <div class="food_name">
+                        <h2>Mutton_Biryani</h2>
+                    </div>
+                    <div class="price" id="mutton-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="mutton">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="mutton-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="mutton">-</button>
+                        <span class="quantity" id="mutton-quantity">0</span>
+                        <button class="increment" data-item="mutton">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal8 food_gal">
+                <div class="food_div div8">
+                    <div class="img8"></div>
+                    <div class="food_name">
+                        <h2>South_Indian_Thali</h2>
+                    </div>
+                    <div class="price" id="thali-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="thali">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="thali-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="thali">-</button>
+                        <span class="quantity" id="thali-quantity">0</span>
+                        <button class="increment" data-item="thali">+</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+     <br><br>
+    <div class="food">
+        <div class="meals_head">
+            <div class="meals">
+                <h1>Dinner</h1>
+            </div>
+        </div>
+        
+        <div class="f_gal9 food_gallery">
+            <div class="food_gal">
+                <div class="food_div div9">
+                    <div class="img9"></div>
+                    <div class="food_name">
+                        <h2>Paneer Tikka</h2>
+                    </div>
+                    <div class="price" id="paneer-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="paneer">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="paneer-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="paneer">-</button>
+                        <span class="quantity" id="paneer-quantity">0</span>
+                        <button class="increment" data-item="paneer">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal10 food_gal">
+                <div class="food_div div10">
+                    <div class="img10"></div>
+                    <div class="food_name">
+                        <h2>Curd Rice</h2>
+                    </div>
+                    <div class="price" id="curd-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="curd">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="curd-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="curd">-</button>
+                        <span class="quantity" id="curd-quantity">0</span>
+                        <button class="increment" data-item="curd">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal11 food_gal">
+                <div class="food_div div11">
+                    <div class="img11"></div>
+                    <div class="food_name">
+                        <h2>Egg Rice</h2>
+                    </div>
+                    <div class="price" id="egg-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="egg">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="egg-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="egg">-</button>
+                        <span class="quantity" id="egg-quantity">0</span>
+                        <button class="increment" data-item="egg">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="f_gal12 food_gal">
+                <div class="food_div div12">
+                    <div class="img12"></div>
+                    <div class="food_name">
+                        <h2>Roti</h2>
+                    </div>
+                    <div class="price" id="roti-price">Price: ₹0</div>
+                    <div class="addToCart">
+                        <button class="add-to-cart" data-item="roti">Add to Cart</button>
+                    </div>
+                    
+                    <div class="quantity-controls" id="roti-controls" style="display:none;">
+                        
+                        <button class="decrement" data-item="roti">-</button>
+                        <span class="quantity" id="roti-quantity">0</span>
+                        <button class="increment" data-item="roti">+</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cart_sum">
+        <div id="cart-summary">
+            <h3>Your Cart</h3>
+            
+            <p>Total Items: <span id="total-items">0</span></p>
+            <p>Total Price: ₹<span id="total-cost">0</span></p>
+           
+            
+        </div>
+        <div id="cart-summary-button">
+            <button onclick="proceedToPayment()">Click to Pay</button>
+        </div>
+    </div>
+    
+    
+    <!-- <script src="food.js"></script> -->
+    <script>
+        const menu = {
+            "The Park Hyderabad": {
+                "idly": 50,
+                "dosa": 100,
+                "vada": 60,
+                "upma": 80,
+                "fried": 180,
+                "chicken": 200,
+                "mutton": 220,
+                "thali": 160,
+                "paneer":180,
+                "egg":150,
+                "curd":110,
+                "roti":100
+
+            },
+            "Taj Hotel": {
+                "idly": 60,
+                "dosa": 120,
+                "vada": 70,
+                "upma": 90,
+                "fried": 250,
+                "chicken": 270,
+                "mutton": 290,
+                "thali": 200,
+                "paneer":200,
+                "egg":170,
+                "curd":150,
+                "roti":140
+            },
+            "Lemon Tree": {
+                "idly": 40,
+                "dosa": 90,
+                "vada": 50,
+                "upma": 70,
+                "fried": 170,
+                "chicken": 190,
+                "mutton": 210,
+                "thali": 130,
+                "paneer":150,
+                "egg":140,
+                "curd":115,
+                "roti":100
+            },
+            "Taj Deccan": {
+                "idly": 55,
+                "dosa": 110,
+                "vada": 65,
+                "upma": 85,
+                "fried": 230,
+                "chicken": 250,
+                "mutton": 270,
+                "thali": 190,
+                "paneer":180,
+                "egg":135,
+                "curd":130,
+                "roti":110
+            },
+            "Ibis Hotel": {
+                "idly": 45,
+                "dosa": 95,
+                "vada": 55,
+                "upma": 75,
+                "fried": 200,
+                "chicken": 220,
+                "mutton": 240,
+                "thali": 180,
+                "paneer":180,
+                "egg":130,
+                "curd":110,
+                "roti":115
+            },
+            "Trident Hotel": {
+                "idly": 50,
+                "dosa": 100,
+                "vada": 60,
+                "upma": 80,
+                "fried": 210,
+                "chicken": 230,
+                "mutton": 250,
+                "thali": 170,
+                "paneer":190,
+                "egg":160,
+                "curd":125,
+                "roti":120
+            },
+            "Taj Krishna": {
+                "idly": 60,
+                "dosa": 120,
+                "vada": 70,
+                "upma": 90,
+                "fried": 280,
+                "chicken": 300,
+                "mutton": 320,
+                "thali": 220,
+                "paneer":200,
+                "egg":150,
+                "curd":130,
+                "roti":120
+            },
+            "Golconda Hotel": {
+                "idly": 40,
+                "dosa": 80,
+                "vada": 50,
+                "upma": 70,
+                "fried": 160,
+                "chicken": 180,
+                "mutton": 200,
+                "thali": 140,
+                "paneer":150,
+                "egg":130,
+                "curd":100,
+                "roti":90
+            }
+        };
+    
+        // Function to update menu prices based on selected hotel
+        function updateMenuPrices() {
+            const selectedHotel = document.getElementById("hotel-dropdown").value;
+            localStorage.setItem("Naame", selectedHotel);
+
+    
+            if (selectedHotel && menu[selectedHotel]) {
+                const prices = menu[selectedHotel];
+    
+                document.getElementById("idly-price").innerText = `Price: ₹${prices.idly}`;
+                document.getElementById("dosa-price").innerText = `Price: ₹${prices.dosa}`;
+                document.getElementById("vada-price").innerText = `Price: ₹${prices.vada}`;
+                document.getElementById("upma-price").innerText = `Price: ₹${prices.upma}`;
+                document.getElementById("fried-price").innerText = `Price: ₹${prices.fried}`;
+                document.getElementById("chicken-price").innerText = `Price: ₹${prices.chicken}`;
+                document.getElementById("mutton-price").innerText = `Price: ₹${prices.mutton}`;
+                document.getElementById("thali-price").innerText = `Price: ₹${prices.thali}`;
+                document.getElementById("paneer-price").innerText = `Price: ₹${prices.paneer}`;
+                document.getElementById("curd-price").innerText = `Price: ₹${prices.curd}`;
+                document.getElementById("egg-price").innerText = `Price: ₹${prices.egg}`;
+                document.getElementById("roti-price").innerText = `Price: ₹${prices.roti}`;
+            } else {
+                document.getElementById("idly-price").innerText = `Price: ₹0`;
+                document.getElementById("dosa-price").innerText = `Price: ₹0`;
+                document.getElementById("vada-price").innerText = `Price: ₹0`;
+                document.getElementById("upma-price").innerText = `Price: ₹0`;
+                document.getElementById("fried-price").innerText = `Price: ₹0`;
+                document.getElementById("chicken-price").innerText = `Price: ₹0`;
+                document.getElementById("mutton-price").innerText = `Price: ₹0`;
+                document.getElementById("thali-price").innerText = `Price: ₹0`;
+                document.getElementById("paneer-price").innerText = `Price: ₹0`;
+                document.getElementById("curd-price").innerText = `Price: ₹0`;
+                document.getElementById("egg-price").innerText = `Price: ₹0`;
+                document.getElementById("roti-price").innerText = `Price: ₹0`;
+            }
+            updateCartTotal();
+        }
+    
+        let cart = {
+            "idly": 0,
+            "dosa": 0,
+            "vada": 0,
+            "upma": 0,
+            "fried": 0,
+            "chicken": 0,
+            "mutton": 0,
+            "thali": 0,
+            "paneer":0,
+            "curd":0,
+            "egg":0,
+            "roti":0
+        };
+    
+        // Function to update the cart total
+        function updateCartTotal() {
+            let totalCost = 0;
+            let totalItems = 0;
+    
+            for (const item in cart) {
+                const quantity = cart[item];
+                const price = getFoodPrice(item);
+    
+                totalCost += quantity * price;
+                totalItems += quantity;
+                console.log(`Item: ${item}, Quantity: ${quantity}, Price: ${price}, Subtotal: ${quantity * price}`);
+            }
+    
+            console.log(`Total Items: ${totalItems}, Total Cost: ${totalCost}`);
+            
+            document.getElementById("total-items").innerText = totalItems;
+            document.getElementById("total-cost").innerText = totalCost;
+
+            
+        }
+
+
+        // Update the function to display the room price in the cart summary
+
+    
+        // Function to get the price of a food item
+        function getFoodPrice(item) {
+            const selectedHotel = document.getElementById("hotel-dropdown").value;
+            if (selectedHotel && menu[selectedHotel]) {
+                return menu[selectedHotel][item] || 0;
+            }
+            return 0;
+        }
+    
+        // Function to update the quantity of an item
+        function updateQuantity(item, action) {
+            const itemQuantityElement = document.getElementById(`${item}-quantity`);
+            let quantity = parseInt(itemQuantityElement.innerText);
+    
+            if (action === 'increment') {
+                quantity++;
+            } else if (action === 'decrement' && quantity > 0) {
+                quantity--;
+            }
+    
+            cart[item] = quantity;
+            itemQuantityElement.innerText = quantity;
+    
+            toggleAddToCartButton(item, quantity);
+            console.log(`Item: ${item}, Action: ${action}, Quantity: ${quantity}`);
+            updateCartTotal();
+        }
+    
+        // Function to toggle visibility of "Add to Cart" button
+        function toggleAddToCartButton(item, quantity) {
+            const addToCartButton = document.querySelector(`button[data-item="${item}"]`);
+            const quantityControls = document.getElementById(`${item}-controls`);
+    
+            if (quantity > 0) {
+                addToCartButton.style.display = "none";
+                quantityControls.style.display = "block";
+            } else {
+                addToCartButton.style.display = "block";
+                quantityControls.style.display = "none";
+            }
+        }
+    
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", (e) => {
+                const item = e.target.dataset.item;
+                cart[item]++;
+                console.log(`Add to cart. Item: ${item}, cart[item] = ${cart[item]}`);
+                document.getElementById(`${item}-quantity`).innerText = cart[item];
+                updateCartTotal();
+                toggleAddToCartButton(item, cart[item]);
+            });
+        });
+    
+        document.querySelectorAll(".increment").forEach(button => {
+            button.addEventListener("click", (e) => {
+                const item = e.target.dataset.item;
+                updateQuantity(item, 'increment');
+            });
+        });
+    
+        document.querySelectorAll(".decrement").forEach(button => {
+            button.addEventListener("click", (e) => {
+                const item = e.target.dataset.item;
+                updateQuantity(item, 'decrement');
+            });
+        });
+    
+        document.getElementById("hotel-dropdown").addEventListener("change", updateMenuPrices);
+    
+        updateCartTotal();
+       
+
+        // proceed to pay
+      // proceed to pay
+function proceedToPayment() {
+    let totalCost = 0;
+    
+    // Calculate total cost from the cart
+    for (const item in cart) {
+        if (cart[item] > 0) {
+            totalCost += cart[item] * getFoodPrice(item);
+        }
+    }
+
+    if (totalCost > 0) {
+        const confirmation = confirm(`Total amount: ₹${totalCost}\nDo you want to proceed with the payment?`);
+
+        if (confirmation) {
+            // Fetch room and hotel details from localStorage
+            const selectedHotel = localStorage.getItem("name") || "";
+            const roomType = localStorage.getItem("room-type") || "";
+            const roomPrice = localStorage.getItem("room-price") || "";
+           
+            // Get selected food items from cart
+            // const foodItems = {};
+            // for (const item in cart) {
+            //     if (cart[item] > 0) {
+            //         foodItems[item] = cart[item];
+            //     }
+            // }
+            const foodItems = {};
+              for (const item in cart) {
+                  if (cart[item] > 0) {
+                    foodItems[item] = {
+                        quantity: cart[item],
+                        price: getFoodPrice(item),
+                        total: cart[item] * getFoodPrice(item)
+                   };
+               }
+            }
+
+            localStorage.setItem("foodCart", JSON.stringify(foodItems));
+            localStorage.setItem("foodTotal", totalCost);
+
+            alert(`Booking successful!\nFood Total: ₹${totalCost}`);
+            
+            window.location.href = "../php/food_summary.php"; // Redirect to hotel summary page
+        } else {
+            alert('Payment was canceled.');
+        }
+
+    } else {
+        alert("Please select food items before proceeding.");
+    }
+}
+
+    </script>
+   
+</body>
+</html>
