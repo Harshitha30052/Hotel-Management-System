@@ -65,15 +65,14 @@ As part of this group project, my contributions included:
 
 ## Project Structure
 
-Hotel-Management-System/
+* **html/** – Contains frontend pages and user interface components
+* **css/** – Contains styling and design files
+* **js/** – Contains client-side JavaScript functionality
+* **php/** – Contains backend logic and server-side processing
+* **sql/** – Contains database scripts and schema files
+* **images/** – Stores project images and assets
+* **users.txt** – Stores user-related records
 
-├── html/ → Frontend pages
-├── css/ → Styling and UI design
-├── js/ → Client-side functionality
-├── php/ → Backend processing
-├── sql/ → Database scripts
-├── images/ → Assets and images
-├── users.txt → User records
 
 ---
 
